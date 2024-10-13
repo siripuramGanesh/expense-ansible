@@ -5,7 +5,8 @@
   tasks:
   - name: installing pymsql module
     ansible.builtin.pip:
-      name: PyMySQL
+      name: 
+      - PyMySQL
   - name: installing sql server
     community.mysql.mysql_db:
       name: mysql
