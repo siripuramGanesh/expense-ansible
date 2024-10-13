@@ -8,6 +8,7 @@
   tasks:
   - name: installing python libraries
     ansible.builtin.pip:
+    name:
     - botocore
     - boto3
   - name: creating ec2 instances for expense
