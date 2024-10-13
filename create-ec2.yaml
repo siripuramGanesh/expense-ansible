@@ -1,0 +1,20 @@
+name: create ec2 instances
+hosts: local
+connection: local
+vars:
+  ami: ami-09c813fb71547fc4f
+  vpc: subnet-0d8a0eef049b5fb05
+  sgroup: sg-0fbc2d03237543962
+
+tasks:
+- name: creating ec2 instances for expense
+  amazon.aws.ec2_instance:
+  name: "{{ item }}"
+  vpc_subnet_id: "{{ vpc }}"
+  instance_type: t3.micro
+  security_group: "{{ sgroup }}"
+  image_id: "{{ ami }}"
+  loop:
+  - mysql
+  - backend
+  - frontend
