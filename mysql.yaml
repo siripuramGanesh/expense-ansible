@@ -1,5 +1,6 @@
 - name: mysql configuration
   hosts: mysql
+  become: yes
   tasks:
   - name: installing sql server
     community.mysql.mysql_db:
