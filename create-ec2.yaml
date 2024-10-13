@@ -50,7 +50,7 @@
       record: "{{ zone1 }}"
       type A:
       ttl: 1
-      value: "{{ item.instances[0].public_ip_address}}"
+      value: "{{ item.instances[0].public_ip_address }}"
       wait: true
       overwrite: true
     loop: "{{ ec2_instances.results }}"
