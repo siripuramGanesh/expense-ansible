@@ -8,6 +8,6 @@
       name: 
       - PyMySQL
   - name: installing sql server
-    community.mysql.mysql_db:
-      name: mysql
+    ansible.builtin.package:
+      name: mysql-server
       state: present
