@@ -5,6 +5,7 @@
     ami: ami-09c813fb71547fc4f
     vpc: subnet-0d8a0eef049b5fb05
     sgroup: sg-0fbc2d03237543962
+    zone1: ganeshsiripuram.tech
     instances:
     - mysql
     - backend
@@ -29,3 +30,14 @@
   - name: print the output
     ansible.builtin.debug:
       msg: "{{ ec2_instances }}"
+
+  - name: create r53 private records
+    amazon.aws.route53:
+      state: present
+      zone: "{{ zone1 }}"
+      record: "{{ item.item }}.{{ zone1 }}"
+      type: A
+      ttl: 1
+      value: "{{ item.private_ip_address }}"
+      wait: true
+      loop: "{{ ec2_instances.result }}"
