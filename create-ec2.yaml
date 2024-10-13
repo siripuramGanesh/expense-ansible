@@ -6,6 +6,10 @@
     vpc: subnet-0d8a0eef049b5fb05
     sgroup: sg-0fbc2d03237543962
   tasks:
+  - name: installing python libraries
+    ansible.builtin.pip:
+    - botocore
+    - boto3
   - name: creating ec2 instances for expense
     amazon.aws.ec2_instance:
       name: "{{ item }}"
