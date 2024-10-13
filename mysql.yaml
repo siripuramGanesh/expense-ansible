@@ -1,6 +1,7 @@
 - name: mysql configuration
   hosts: mysql
-  become: yes
+  become: yes 
+  connection: ssh
   tasks:
   - name: installing pymsql module
     ansible.builtin.pip:
