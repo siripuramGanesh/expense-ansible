@@ -1,6 +1,5 @@
 - name: mysql configuration
   hosts: mysql
-  connection: ssh
   tasks:
   - name: installing sql server
     community.mysql.mysql_db:
