@@ -8,11 +8,11 @@
   tasks:
   - name: creating ec2 instances for expense
     amazon.aws.ec2_instance:
-    name: "{{ item }}"
-    vpc_subnet_id: "{{ vpc }}"
-    instance_type: t3.micro
-    security_group: "{{ sgroup }}"
-    image_id: "{{ ami }}"
+      name: "{{ item }}"
+      vpc_subnet_id: "{{ vpc }}"
+      instance_type: t3.micro
+      security_group: "{{ sgroup }}"
+      image_id: "{{ ami }}"
     loop:
     - mysql
     - backend
