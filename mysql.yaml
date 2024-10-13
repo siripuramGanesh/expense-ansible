@@ -1,9 +1,8 @@
 - name: mysql configuration
-  hosts: local
-  connection: local
+  hosts: mysql
+  connection: ssh
   tasks:
   - name: installing sql server
     community.mysql.mysql_db:
       name: mysql
       state: present
-      
