@@ -1,0 +1,9 @@
+- name: mysql configuration
+  hosts: local
+  connection: local
+  tasks:
+  - name: installing sql server
+    community.mysql.mysql_db:
+      name: mysql
+      state: present
+      
