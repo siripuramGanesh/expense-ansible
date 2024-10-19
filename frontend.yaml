@@ -27,3 +27,13 @@
     ansible.builtin.file:
       path: /usr/share/nginx/html
       state: directory
+
+  - name: copying the content
+    ansible.builtin.copy:
+      src: /tmp/frontend.zip
+      dest: /etc/nginx/default.d/expense.conf
+
+  - name: start the service
+    ansible.builtin.service:
+      name: nginx
+      state: restarted
