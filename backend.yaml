@@ -52,7 +52,7 @@
   - name: installing mypysql module
     ansible.builtin.pip:
       name: "{{ item }}"
-      loop:
+    loop:
       - PyMySQL
       - cryptography
 
