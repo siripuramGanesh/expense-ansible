@@ -45,6 +45,13 @@
     ansible.builtin.copy:
       src: backend.service
       dest: /etc/systemd/system/backend.service
+
+  - name: installing mysql client and required dependencies 
+    ansible.builtin.package:
+      name: mysqld
+      state: present
+
+
   
   
   
