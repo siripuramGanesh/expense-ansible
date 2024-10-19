@@ -49,6 +49,10 @@
       src: backend.service
       dest: /etc/systemd/system/backend.service
 
+  - name: installing mypysql module
+    ansible.builtin.pip:
+      name: PyMySQL
+      
   - name: dumping mysql data
     community.mysql.mysql_db:
       login_user: root
