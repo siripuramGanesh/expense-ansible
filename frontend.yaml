@@ -28,12 +28,19 @@
       path: /usr/share/nginx/html
       state: directory
 
+
+  - name: unziping the content
+    ansible.builtin.unarchive:
+      src: /tmp/frontend.zip
+      dest: /usr/share/nginx/html
+      remote_src: yes
+
   - name: copying the content
     ansible.builtin.copy:
       src: /tmp/frontend.zip
       dest: /etc/nginx/default.d/expense.conf
 
-  - name: start the service
+  - name: restart the service
     ansible.builtin.service:
       name: nginx
       state: restarted
