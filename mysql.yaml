@@ -1,11 +1,16 @@
 - name: mysql configuration
   hosts: mysql
   become: yes 
+  vars:
+    password: ExpenseApp@1
+    mysql_host: mysql.ganeshsiripuram.tech
+
   tasks:
   - name: installing pymsql module
     ansible.builtin.pip:
       name: 
       - PyMySQL
+      executable: pip3.9
   - name: installing sql server
     ansible.builtin.package:
       name: mysql-server
@@ -15,3 +20,17 @@
     ansible.builtin.service:
       name: mysql
       state: started
+
+  - name: creating expense user
+    community.mysql.mysql_info:
+      login_user: root
+      login_password: "{{password}}"
+      login_host: "{{mysql_host}}"
+    ignore_errors: true
+    register: mysql_info
+
+  - name: print mysql info
+    ansible.builtin.debug:
+      msg: "{{mysql_info}}"
+
+  
