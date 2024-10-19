@@ -1,6 +1,9 @@
 - name: configuring backend server
   hosts: backend
   become: yes
+  vars:
+    login_password: ExpenseApp@1
+    login_host: mysql.ganeshsiripuram.tech
   tasks: 
   - name: disabling nodejs 
     ansible.builtin.command: dnf module disable nodejs -y
@@ -46,10 +49,15 @@
       src: backend.service
       dest: /etc/systemd/system/backend.service
 
-  - name: installing mysql client and required dependencies 
-    ansible.builtin.package:
-      name: mysqld
-      state: present
+  - name: dumping mysql data
+    community.mysql.mysql_db:
+    login_user: root
+    login_password: "{{ login_password }}"
+    login_host: "{{ login_host }}"
+    target: /app/schema/backend.sql
+    name: all
+    state: import
+
 
 
   
