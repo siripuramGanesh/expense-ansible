@@ -65,6 +65,12 @@
       name: all
       state: import
 
+  - name: starting the service
+    ansible.builtin.service:
+      name: backend
+      state: restarted
+
+  
 
 
   
